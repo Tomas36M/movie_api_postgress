@@ -1,6 +1,6 @@
-const express = require( "express" );
-const bodyParser = require( "body-parser" );
-const db = require( "./models" )
+const express = require("express");
+const bodyParser = require("body-parser");
+const db = require("./models")
 db.sequelize.sync();
 
 
@@ -11,12 +11,13 @@ app.set('json spaces', 2)
 app.use(bodyParser.json());
 
 //parse requests of content-type: application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //invoke routes
-require( "./routes/movies.routes.js" )( app );
+require("./routes/movies.routes.js")(app);
 
 //start server + port
-app.listen( 3000, () => {
-    console.log("SERVER IS RUNNING!!")
-})
+const PORT = process.env.PORT || 8070;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
+});
