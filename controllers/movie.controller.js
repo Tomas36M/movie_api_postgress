@@ -14,7 +14,8 @@ exports.create = (req, res) => {
     const movie = {
         title: req.body.title,
         description: req.body.description,
-        published: req.body.published
+        published: req.body.published,
+        image:
     }
 
     Movie.create(movie)
@@ -70,12 +71,12 @@ exports.findAll = (req, res) => {
 
 //DELETE
 
-exports.destroy = (req, res) => {
+exports.delete = (req, res) => {
 
     const id = req.params.id;
 
-    Movie.destroy(id, {where: {id: id}})
-    .then( row => {
+    Movie.destroy({where: {id: id}})
+    .then(row => {
         if (row == 1) {
             res.status(204).send({message: `El id ${id}, ha sido eleiminado`});
         } else {
