@@ -75,7 +75,7 @@ exports.destroy = (req, res) => {
     const id = req.params.id;
 
     Movie.destroy(id, {where: {id: id}})
-    .then(() => {
+    .then( row => {
         if (row !== null) {
             res.status(200).send({message: `El id ${id}, ha sido eleiminado`});
         } else {
