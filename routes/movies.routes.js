@@ -7,7 +7,7 @@ module.exports = app => {
     router.get("/", movies.findAll);
     router.put("/update/:id", movies.update);
     router.get("/:id", movies.findByPk);
-    router.delete("/:id", movies.destroy);
+    router.delete("/:id", movies.delete);
 
     //https://localhost:3000/api/movies/id
 
