@@ -76,8 +76,8 @@ exports.destroy = (req, res) => {
 
     Movie.destroy(id, {where: {id: id}})
     .then( row => {
-        if (row !== null) {
-            res.status(200).send({message: `El id ${id}, ha sido eleiminado`});
+        if (row == 1) {
+            res.status(204).send({message: `El id ${id}, ha sido eleiminado`});
         } else {
             res.status(404).send({
                 message: `The movie with id = ${id}, was not found`
@@ -85,7 +85,7 @@ exports.destroy = (req, res) => {
         }
     })
     .catch((err) => {
-        res.status(400).send(err.message);
+        res.status(500).send(err.message);
     })
 }
 
