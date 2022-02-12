@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const db = require("./models")
+const cors = require("cors");
 db.sequelize.sync();
 
 
@@ -9,7 +10,7 @@ const app = express();
 app.set('json spaces', 2)
 //parse requests of content-type: application/json
 app.use(bodyParser.json());
-
+app.use(cors());
 //parse requests of content-type: application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
