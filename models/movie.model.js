@@ -9,6 +9,10 @@ module.exports = ( sequelize, Sequelize ) => {
         image: {
             type: Sequelize.STRING
         },
+        likes: {
+            type: Sequelize.INTEGER,
+            defaultValue: 0
+        },
         published: {
             type: Sequelize.BOOLEAN
         }
